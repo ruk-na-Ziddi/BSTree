@@ -33,3 +33,26 @@ void test_createNode_creates_node_and_sets_its_data_to_1500_leftNode_rightNode_t
 	assertEqual((int)(*node).rightNode, 0);
 	free(node);
 }
+
+void test_insert_insert_a_data_to_a_new_creted_tree_and_gives_one_on_success(){
+	int data=15;
+	BSTree tree=createBSTree();
+	assertEqual(insert(&tree,data), 1);
+	assertEqual(tree.root->data,15);
+}
+
+void test_insert_inserts_data_in_leftNode_of_root_when_rootdata_is_greter_than_data(){
+	BSTree tree = createBSTree();
+	assertEqual(insert(&tree,15),1);
+	assertEqual(tree.root->data,15);
+	assertEqual(insert(&tree,10),1);
+	assertEqual(*(int *)tree.root->leftNode,10);
+}
+
+void test_insert_inserts_data_in_rightNode_of_root_when_rootdata_is_smaller_than_data(){
+	BSTree tree = createBSTree();
+	assertEqual(insert(&tree,15),1);
+	assertEqual(tree.root->data,15);
+	assertEqual(insert(&tree,20),1);
+	assertEqual(*(int *)tree.root->rightNode,20);
+}
