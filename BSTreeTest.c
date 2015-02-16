@@ -128,3 +128,8 @@ void test_deleteData_deletes_the_data_and_gives_back_the_deleted_value_all_value
 	assertEqual(deleteData(&tree, 15)->data, 15);
 	assertEqual(deleteData(&tree, 20)->data, 20);
 }
+
+void test_deleteData_gives_NULL_for_when_root_is_NULL(){
+	BSTree tree=createBSTree();
+	assertEqual((int)deleteData(&tree, 10), 0);
+}

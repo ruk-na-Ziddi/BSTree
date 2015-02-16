@@ -94,6 +94,6 @@ Node * deleteData(BSTree * tree , int data){
 		if(tree->root->leftNode==NULL) tree->root=tree->root->rightNode;
 		if(tree->root->rightNode==NULL) tree->root=tree->root->leftNode;
 	}
-
+	
 	return temp;
 }
