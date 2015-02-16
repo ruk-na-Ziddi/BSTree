@@ -115,4 +115,16 @@ void test_deleteData_deletes_the_data_and_gives_back_the_deleted_value_hahaha(){
 	insert(&tree,50);
 	insert(&tree,55);
 	assertEqual(deleteData(&tree, 40)->data, 40);
+	assertEqual(deleteData(&tree, 40)->data, 40);
+}
+
+void test_deleteData_deletes_the_data_and_gives_back_the_deleted_value_all_value(){
+	BSTree tree=createBSTree();
+	insert(&tree,10);
+	insert(&tree,15);
+	insert(&tree,20);
+	insert(&tree,25);
+	assertEqual(deleteData(&tree, 10)->data, 10);
+	assertEqual(deleteData(&tree, 15)->data, 15);
+	assertEqual(deleteData(&tree, 20)->data, 20);
 }
