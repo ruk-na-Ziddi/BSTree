@@ -98,11 +98,21 @@ Node * deleteData(BSTree * tree , int data){
 	return temp;
 }
 
-void PrintInorder(Node *node){
-	if(node==NULL){
+void PrintInorder(Node *root){
+	if(root==NULL){
 		return;
 	}
-	PrintInorder(node->leftNode);
-	printf("%d ",node->data);
-	PrintInorder(node->rightNode);
+	PrintInorder(root->leftNode);
+	printf("%d<->\n",root->data);
+	PrintInorder(root->rightNode);
 }
+
+void PrintPreorder(Node *root){
+	if(root==NULL){
+		return;
+	}
+	printf("%d<->",root->data);
+	PrintPreorder(root->leftNode);
+	PrintPreorder(root->rightNode);
+}
+
