@@ -57,44 +57,43 @@ int hasNoChild(Node_ptr node){
 	return 0;
 }
 
-int swap(Node* node,Node* rootNode) {
-	int temp;
-	temp = node->data;
-	node->data = rootNode->data;
-	rootNode->data = temp;
-	return 0;
+Node_ptr findMin(Node *node){
+	if(node==NULL){
+		return NULL;
+	}
+	if(node->leftNode)
+		return findMin(node->leftNode);
+	else 
+		return node;
 }
 
 
-
 Node * deleteData(BSTree * tree , int data){
-	Node_ptr node;
+	Node_ptr temp=NULL;
 	BSTree childTree=createBSTree();
-	if(tree->root ==  NULL) return NULL;
-	if(tree->root->data == data){
-		if(hasNoChild(tree->root)==1){
-			node=tree->root; tree->root=NULL;
-			return node;
-		}
-		if(tree->root->rightNode){
-			swap(tree->root->rightNode,tree->root);
-			childTree.root=tree->root->rightNode;
-			node=deleteData(&childTree, data); 
-		}
+
+	if(tree->root==NULL) return NULL;
+
+	if(data<tree->root->data){
+		childTree.root=tree->root->leftNode;
+		return deleteData(&childTree, data);
+	} 
+	
+	if(data>tree->root->data){
+		childTree.root=tree->root->rightNode;
+		return deleteData(&childTree, data);
 	}
 
-	if(tree->root->rightNode!=NULL && tree->root->rightNode->data==data){
-		if(hasNoChild(tree->root->rightNode)){
-			node=tree->root->rightNode;
-			tree->root->rightNode=NULL;
-		}
+	if(tree->root->rightNode && tree->root->leftNode){
+		temp=findMin(tree->root->rightNode);
+		tree->root->data=temp->data;
+		childTree.root=tree->root->rightNode;
+		return deleteData(&childTree, data);
+	}else{
+		temp=tree->root;
+		if(tree->root->leftNode==NULL) tree->root=tree->root->rightNode;
+		if(tree->root->rightNode==NULL) tree->root=tree->root->leftNode;
 	}
 
-	if(tree->root->leftNode!=NULL && tree->root->leftNode->data==data){
-		if(hasNoChild(tree->root->leftNode)){
-			node=tree->root->leftNode;
-			tree->root->leftNode=NULL;
-		}
-	}
-	return node;
+	return temp;
 }
