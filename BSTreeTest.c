@@ -149,6 +149,7 @@ void test_deleteData_gives_NULL_for_when_data_is_not_available_after_once_delete
 	insert(&tree,15);
 	insert(&tree,20);
 	insert(&tree,25);
+	PrintInorder(tree.root);
 	assertEqual(deleteData(&tree, 10)->data, 10);
 	assertEqual((int)deleteData(&tree, 10), 0);
 }

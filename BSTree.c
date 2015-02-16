@@ -57,14 +57,14 @@ int hasNoChild(Node_ptr node){
 	return 0;
 }
 
-Node_ptr findMin(Node *node){
-	if(node==NULL){
+Node_ptr findMin(Node *root){
+	if(root==NULL){
 		return NULL;
 	}
-	if(node->leftNode)
-		return findMin(node->leftNode);
+	if(root->leftNode)
+		return findMin(root->leftNode);
 	else 
-		return node;
+		return root;
 }
 
 
@@ -94,6 +94,15 @@ Node * deleteData(BSTree * tree , int data){
 		if(tree->root->leftNode==NULL) tree->root=tree->root->rightNode;
 		if(tree->root->rightNode==NULL) tree->root=tree->root->leftNode;
 	}
-	
+
 	return temp;
+}
+
+void PrintInorder(Node *node){
+	if(node==NULL){
+		return;
+	}
+	PrintInorder(node->leftNode);
+	printf("%d ",node->data);
+	PrintInorder(node->rightNode);
 }
