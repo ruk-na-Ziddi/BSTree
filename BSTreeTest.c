@@ -142,3 +142,13 @@ void test_deleteData_gives_NULL_for_when_data_is_not_available(){
 	insert(&tree,25);
 	assertEqual((int)deleteData(&tree, 50), 0);
 }
+
+void test_deleteData_gives_NULL_for_when_data_is_not_available_after_once_deleted(){
+	BSTree tree=createBSTree();
+	insert(&tree,10);
+	insert(&tree,15);
+	insert(&tree,20);
+	insert(&tree,25);
+	assertEqual(deleteData(&tree, 10)->data, 10);
+	assertEqual((int)deleteData(&tree, 10), 0);
+}
