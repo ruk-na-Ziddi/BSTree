@@ -133,3 +133,12 @@ void test_deleteData_gives_NULL_for_when_root_is_NULL(){
 	BSTree tree=createBSTree();
 	assertEqual((int)deleteData(&tree, 10), 0);
 }
+
+void test_deleteData_gives_NULL_for_when_data_is_not_available(){
+	BSTree tree=createBSTree();
+	insert(&tree,10);
+	insert(&tree,15);
+	insert(&tree,20);
+	insert(&tree,25);
+	assertEqual((int)deleteData(&tree, 50), 0);
+}
