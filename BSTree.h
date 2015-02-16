@@ -20,3 +20,4 @@ Node * find(BSTree, int);
 Node * deleteData(BSTree *, int);
 void PrintInorder(Node *node);
 void PrintPreorder(Node *node);
+void PrintPostorder(Node *root);

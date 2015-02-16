@@ -116,3 +116,11 @@ void PrintPreorder(Node *root){
 	PrintPreorder(root->rightNode);
 }
 
+void PrintPostorder(Node *root){
+	if(root==NULL){
+		return;
+	}
+	PrintPostorder(root->leftNode);
+	PrintPostorder(root->rightNode);
+	printf("\n%d --",root->data);
+}
