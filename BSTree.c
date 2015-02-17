@@ -74,6 +74,12 @@ Node * deleteData(BSTree * tree , int data){
 
 	if(tree->root==NULL) return NULL;
 
+	if(!tree->root->leftNode && !tree->root->rightNode && tree->root->data==data){
+		temp=tree->root;
+		tree->root=NULL;
+		return temp;
+	}
+
 	if(data<tree->root->data){
 		childTree.root=tree->root->leftNode;
 		return deleteData(&childTree, data);
